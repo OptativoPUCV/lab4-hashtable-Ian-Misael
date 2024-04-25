@@ -117,7 +117,6 @@ Pair * nextMap(HashMap * map) {
   if (map==NULL) return NULL;
 
   if (map->current >= map->capacity -1) {
-    map->current = -1;
     return NULL;
   }
 
@@ -131,6 +130,5 @@ Pair * nextMap(HashMap * map) {
           return map->buckets[index];
       }
   }
-  
   return NULL;
 }
