@@ -5,7 +5,6 @@
 #include <ctype.h>
 #include "hashmap.h"
 
-
 typedef struct HashMap HashMap;
 int enlarge_called=0;
 
@@ -25,7 +24,7 @@ Pair * createPair( char * key,  void * value) {
 
 long hash( char * key, long capacity) {
     unsigned long hash = 0;
-     char * ptr;
+    char * ptr;
     for (ptr = key; *ptr != '\0'; ptr++) {
         hash += hash*32 + tolower(*ptr);
     }
@@ -52,8 +51,12 @@ void enlarge(HashMap * map) {
 
 
 HashMap * createMap(long capacity) {
-
-    return NULL;
+  HashMap * map = (HashMap *)malloc(sizeof(HashMap));
+  map->buckets = (Pair **)calloc(capacity, sizeof(Pair *));
+  map->size = 0;
+  map->capacity = capacity;
+  map->current = -1;
+  return map;
 }
 
 void eraseMap(HashMap * map,  char * key) {    
