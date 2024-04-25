@@ -37,6 +37,14 @@ int is_equal(void* key1, void* key2){
     return 0;
 }
 
+HashMap * createMap(long capacity) {
+  HashMap * map = (HashMap *)malloc(sizeof(HashMap));
+  map->buckets = (Pair **)calloc(capacity, sizeof(Pair *));
+  map->size = 0;
+  map->capacity = capacity;
+  map->current = -1;
+  return map;
+}
 
 void insertMap(HashMap * map, char * key, void * value) {
 
@@ -49,19 +57,8 @@ void enlarge(HashMap * map) {
 
 }
 
-
-HashMap * createMap(long capacity) {
-  HashMap * map = (HashMap *)malloc(sizeof(HashMap));
-  map->buckets = (Pair **)calloc(capacity, sizeof(Pair *));
-  map->size = 0;
-  map->capacity = capacity;
-  map->current = -1;
-  return map;
-}
-
-void eraseMap(HashMap * map,  char * key) {    
-
-
+void eraseMap(HashMap * map,  char * key) {
+  
 }
 
 Pair * searchMap(HashMap * map,  char * key) {   
